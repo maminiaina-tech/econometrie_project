@@ -1,6 +1,6 @@
-# Econometrie M1
+# Econometrie
 
-Outil d'analyse econometrique avancee pour le Master 1. Application de bureau Python offrant une interface graphique complete pour l'estimation et le diagnostic de modeles de regression lineaire.
+Outil d'analyse econometrique avancee pour le Master 1 en Sciences de Données et Intelligence Artificielle. Application de bureau Python offrant une interface graphique complete pour l'estimation et le diagnostic de modeles de regression lineaire.
 
 ## Fonctionnalites
 
