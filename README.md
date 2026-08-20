@@ -1,32 +1,139 @@
-# Résumé Automatique de Documents
+# Econometrie M1
 
-Cette application est une interface de bureau développée en Python avec Tkinter, permettant de générer des résumés automatiques de documents (PDF, DOCX, TXT) 
-en utilisant des modèles de traitement du langage naturel (NLP). Elle inclut également une fonctionnalité de traduction, ainsi que la possibilité de télécharger les résumés en formats DOCX et PDF.
+Outil d'analyse econometrique avancee pour le Master 1. Application de bureau Python offrant une interface graphique complete pour l'estimation et le diagnostic de modeles de regression lineaire.
 
-## Fonctionnalités
+## Fonctionnalites
 
-- **Extraction de texte** : Supporte les formats PDF, DOCX, et TXT.
-- **Génération de résumés** : Utilise un modèle de résumé NLP pour résumer le contenu extrait.
-- **Traduction** : Traduction automatique des résumés entre l'anglais et le français.
-- **Téléchargement** : Permet de télécharger les résumés en fichiers PDF et DOCX.
-- **Historique** : Enregistre et affiche l'historique des résumés générés et traduits.
+### Estimation de modeles
+- Regression par moindres carrés ordinaires (MCO/OLS)
+- Estimation des coefficients avec erreurs standards, statistiques t et p-values
+- R², R² ajusté, F-statistique, AIC, BIC, log-vraisemblance
 
-## Prérequis
+### Analyse complete
+- Matrices X, X'X, X'Y, (X'X)⁻¹, variance-covariance
+- Tableau des resultats avec valeurs observees, predites et residus
+- Steps de calcul detailles et formules mathematiques
 
-Avant de démarrer, assurez-vous d'avoir installé les dépendances suivantes :
+### Tests de diagnostic
+- **Durbin-Watson** : autocorrelation des residus
+- **Breusch-Pagan** : heteroscedasticite
+- **Anderson-Darling** : normalite
+- **Jarque-Bera** : normalite
 
-- Python 3.x
-- Tkinter (inclus avec la plupart des installations Python)
-- `transformers` pour les modèles NLP
-- `pdfplumber` pour extraire le texte des fichiers PDF
-- `python-docx` pour lire et créer des fichiers DOCX
-- `fpdf` pour créer des fichiers PDF
+### Multicollinearite
+- Facteurs d'Inflation de la Variance (VIF)
+- Indices de condition et valeurs propres
+- Test de Klein
+- Test de Farrar-Glauber (Chi², tests F, tests t)
 
-### Installation des dépendances
+### Correlation partielle
+- Correlations partielles de tous ordres
+- R² partiels (contribution marginale de chaque variable)
 
-Pour installer les bibliothèques nécessaires, exécutez les commandes suivantes :
+### Tests statistiques
+- Test de significativite individuelle (test t)
+- Test de significativite globale (test F)
+- Determination du mix optimal par elasticites
+
+### Import/Export
+- Import Excel (avec apercu interactif) et CSV
+- Export Excel (multi-feuilles), Word (DOCX), PDF (paysage)
+- Export de graphiques (PNG)
+
+### Graphiques de diagnostic
+- Residus vs valeurs ajustees
+- QQ Plot
+- Leverage
+- Histogramme des residus
+- Matrice de correlation
+- Autocorrelogramme (ACF/PACF)
+
+## Installation
+
+### Depuis les sources
 
 ```bash
-pip install transformers pdfplumber python-docx fpdf
+git clone https://github.com/votre-utilisateur/econometrie_m1.git
+cd econometrie_m1
+python -m venv .venv
+source .venv/bin/activate  # Linux/Mac
+# .venv\Scripts\activate   # Windows
+pip install -e ".[dev]"
+```
 
+### Dependancees principales
 
+- Python >= 3.10
+- numpy, pandas, statsmodels, scipy
+- matplotlib, seaborn
+- fpdf2, python-docx, openpyxl
+- sympy
+
+## Utilisation
+
+### Lancer l'application principale
+
+```bash
+python -m econometrie_m1.app
+```
+
+### Depuis Python
+
+```python
+from econometrie_m1.app import main
+main()
+```
+
+### Lancer les tests
+
+```bash
+pytest tests/ -v
+```
+
+### Linter le code
+
+```bash
+ruff check src/ tests/
+ruff format src/ tests/
+```
+
+## Structure du projet
+
+```
+econometrie_m1/
+├── src/
+│   └── econometrie_m1/
+│       ├── __init__.py
+│       ├── app.py                    # Application principale (IHM)
+│       ├── tables/
+│       │   ├── __init__.py
+│       │   └── statistical_tables.py # Tables de Student, Chi², Fisher
+│       ├── computations/
+│       │   ├── __init__.py
+│       │   └── stats.py              # Calculs econometriques pures
+│       └── export/
+│           ├── __init__.py
+│           └── exporters.py          # Export Excel, Word, PDF
+├── tests/
+│   ├── conftest.py
+│   └── test_statistical_tables.py
+├── pyproject.toml
+├── .gitignore
+├── .pre-commit-config.yaml
+├── .github/
+│   └── workflows/
+│       └── ci.yml
+└── README.md
+```
+
+## Configuration
+
+L'application propose un menu de configuration permettant de :
+- Modifier le nombre de decimales affichees
+- Ajuster le seuil de significativite (alpha)
+- Afficher/masquer les formules, interpretations et etapes de calcul
+- Changer la notation (α ou β)
+
+## License
+
+MIT
