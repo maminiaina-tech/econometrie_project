@@ -88,12 +88,14 @@ pip install -e ".[nlp]"
 ### Lancer l'application principale
 
 ```bash
+econometrie              # via entry point
 python -m econometrie_m1.app
 ```
 
 ### Lancer le resumeur
 
 ```bash
+resume                   # via entry point
 python -m econometrie_m1.summarizer
 ```
 
