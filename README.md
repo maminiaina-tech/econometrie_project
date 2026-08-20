@@ -53,8 +53,8 @@ Outil d'analyse econometrique avancee pour le Master 1 en Sciences de Données e
 ### Depuis les sources
 
 ```bash
-git clone https://github.com/votre-utilisateur/econometrie_m1.git
-cd econometrie_m1
+git clone https://github.com/maminiaina-tech/econometrie_project
+cd econometrie_project
 python -m venv .venv
 source .venv/bin/activate  # Linux/Mac
 # .venv\Scripts\activate   # Windows
