@@ -5,9 +5,9 @@ Outil d'analyse econometrique avancee pour le Master 1 en Sciences de Données e
 ## Fonctionnalites
 
 ### Estimation de modeles
-- Regression par moindres carrés ordinaires (MCO/OLS)
+- Regression par moindres carres ordinaires (MCO/OLS)
 - Estimation des coefficients avec erreurs standards, statistiques t et p-values
-- R², R² ajusté, F-statistique, AIC, BIC, log-vraisemblance
+- R², R² ajuste, F-statistique, AIC, BIC, log-vraisemblance
 
 ### Analyse complete
 - Matrices X, X'X, X'Y, (X'X)⁻¹, variance-covariance
@@ -48,6 +48,12 @@ Outil d'analyse econometrique avancee pour le Master 1 en Sciences de Données e
 - Matrice de correlation
 - Autocorrelogramme (ACF/PACF)
 
+### Resume automatique (optionnel)
+- Resume de documents PDF, DOCX et TXT via modeles Hugging Face
+- Traduction automatique EN→FR
+- Interface dediee avec customtkinter
+- Modules `summarizer.py` (complet) et `summarizer_simple.py` (allégé)
+
 ## Installation
 
 ### Depuis les sources
@@ -69,12 +75,26 @@ pip install -e ".[dev]"
 - fpdf2, python-docx, openpyxl
 - sympy
 
+### Dependancees NLP (optionnel)
+
+```bash
+pip install -e ".[nlp]"
+```
+
+- transformers, torch, pdfplumber, customtkinter
+
 ## Utilisation
 
 ### Lancer l'application principale
 
 ```bash
 python -m econometrie_m1.app
+```
+
+### Lancer le resumeur
+
+```bash
+python -m econometrie_m1.summarizer
 ```
 
 ### Depuis Python
@@ -105,6 +125,8 @@ econometrie_m1/
 │   └── econometrie_m1/
 │       ├── __init__.py
 │       ├── app.py                    # Application principale (IHM)
+│       ├── summarizer.py             # Resume automatique (complet)
+│       ├── summarizer_simple.py      # Resume automatique (allégé)
 │       ├── tables/
 │       │   ├── __init__.py
 │       │   └── statistical_tables.py # Tables de Student, Chi², Fisher
@@ -115,8 +137,12 @@ econometrie_m1/
 │           ├── __init__.py
 │           └── exporters.py          # Export Excel, Word, PDF
 ├── tests/
+│   ├── __init__.py
 │   ├── conftest.py
-│   └── test_statistical_tables.py
+│   ├── test_statistical_tables.py
+│   ├── test_computations.py
+│   └── test_export.py
+├── legacy/                           # Anciens fichiers (archivés)
 ├── pyproject.toml
 ├── .gitignore
 ├── .pre-commit-config.yaml
