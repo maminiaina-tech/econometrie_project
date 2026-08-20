@@ -1,7 +1,8 @@
 """Common fixtures for statistical tables tests."""
 
-import pytest
 from typing import Any
+
+import pytest
 
 # Raw data imported from the application module
 # Student table data (dl, 0.20, 0.10, 0.05, 0.025, 0.01, 0.005)
